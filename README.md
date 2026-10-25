@@ -16,7 +16,7 @@
 | **Proyecto** | Despliegue y Aseguramiento de Aplicación Pokédex en Nube Pública |
 | **Estudiante / Desarrollador** | Milton Berrío |
 | **Repositorio Oficial** | [https://github.com/MiltonBerrio/pokedex](https://github.com/MiltonBerrio/pokedex) |
-| **URL Pública en Producción** | **[https://gentle-pebble-03dd9761e.azurestaticapps.net](https://gentle-pebble-03dd9761e.azurestaticapps.net)** |
+| **URL Pública en Producción** | **[https://gentle-pebble-03dd9761e.4.azurestaticapps.net](https://gentle-pebble-03dd9761e.4.azurestaticapps.net)** |
 | **Nube Pública Seleccionada** | **Microsoft Azure** (Azure for Students / Azure Static Web Apps) |
 | **Asignatura** | Sistemas Distribuidos |
 

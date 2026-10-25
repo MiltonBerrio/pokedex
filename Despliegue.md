@@ -18,7 +18,7 @@ El presente documento detalla la metodología técnica para compilar, publicar y
 | **Proyecto** | Pokédex Web Application (Generaciones I, II y III) |
 | **Autor / Desarrollador** | Milton Berrío |
 | **Repositorio GitHub** | [https://github.com/MiltonBerrio/pokedex](https://github.com/MiltonBerrio/pokedex) |
-| **URL Pública en Producción** | **[https://gentle-pebble-03dd9761e.azurestaticapps.net](https://gentle-pebble-03dd9761e.azurestaticapps.net)** |
+| **URL Pública en Producción** | **[https://gentle-pebble-03dd9761e.4.azurestaticapps.net](https://gentle-pebble-03dd9761e.4.azurestaticapps.net)** |
 | **Servicio de Nube** | **Azure Static Web Apps (Free Tier)** |
 | **Pipeline de Automatización** | GitHub Actions Workflow (`.github/workflows/azure-static-web-apps-*.yml`) |
 | **Meta de Seguridad** | **Calificación A+ (100% de puntos en seguridad y encabezados)** |
@@ -122,7 +122,7 @@ El archivo `staticwebapp.config.json` se encuentra ubicado en la raíz del proye
   },
   "globalHeaders": {
     "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pokeapi.co https://beta.pokeapi.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self';",
+    "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pokeapi.co https://beta.pokeapi.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self';",
     "X-Frame-Options": "DENY",
     "X-Content-Type-Options": "nosniff",
     "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -270,7 +270,7 @@ jobs:
 ### Paso 4.7: Obtención de la URL Pública de la Pokédex
 1. Regrese al recurso en el portal de Azure.
 2. En la sección **Información general** (Overview), copie el enlace denominado **"URL"**:
-   - URL asignada por Azure: `https://gentle-pebble-03dd9761e.azurestaticapps.net`
+   - URL asignada por Azure: `https://gentle-pebble-03dd9761e.4.azurestaticapps.net`
 3. Abra una nueva pestaña en su navegador e ingrese a dicha dirección.
 4. ¡La aplicación **Pokédex** se encuentra ahora disponible a nivel mundial con HTTPS y CDN de alta velocidad!
 
@@ -283,7 +283,7 @@ La empresa **Pueblo Paleta Inc.** exige el cumplimiento riguroso de normativas c
 | Encabezado HTTP | Valor Configurado | Función de Protección frente a Amenazas |
 | :--- | :--- | :--- |
 | **Strict-Transport-Security (HSTS)** | `max-age=31536000; includeSubDomains; preload` | Fuerza a los navegadores a comunicarse exclusivamente mediante HTTPS durante al menos 1 año (31,536,000 s), mitigando ataques Man-in-the-Middle (MitM) y ataques de reducción de cifrado (SSL Stripping). |
-| **Content-Security-Policy (CSP)** | `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pokeapi.co https://beta.pokeapi.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self';` | Previene ataques de Cross-Site Scripting (XSS), inyección de datos y carga de recursos no autorizados. Permite únicamente la carga de fuentes tipográficas oficiales (Google Fonts), imágenes de Pokémon y llamadas a la API de PokéAPI. |
+| **Content-Security-Policy (CSP)** | `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pokeapi.co https://beta.pokeapi.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self';` | Previene ataques de Cross-Site Scripting (XSS), inyección de datos y carga de recursos no autorizados. Permite únicamente la carga de fuentes tipográficas oficiales (Google Fonts), imágenes de Pokémon y llamadas a la API de PokéAPI sin scripts inseguros. |
 | **X-Frame-Options** | `DENY` | Impide completamente que la aplicación sea embebida dentro de elementos `<frame>`, `<iframe>`, `<embed>` u `<object>` en sitios de terceros, erradicando los ataques de Clickjacking. |
 | **X-Content-Type-Options** | `nosniff` | Obliga al navegador a respetar estrictamente los tipos MIME declarados en la cabecera `Content-Type`, evitando la interpretación maliciosa de archivos (MIME Sniffing). |
 | **Referrer-Policy** | `strict-origin-when-cross-origin` | Controla qué información de referencia (URL previa) se transmite a dominios externos, protegiendo identificadores y parámetros sensibles al interactuar con servicios externos. |
